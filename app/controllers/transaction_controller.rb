@@ -1,15 +1,16 @@
-class TransactionController < ApplicationController
-    def index
-    end
-  
+class TransactionController < ApplicationController  
     def new
+      @transaction = Transaction.new
     end
   
     def create
       @transaction = Transaction.new(trans_params)
   
-      @transaction.save
-      redirect_to @transaction
+      if @transaction.save
+        redirect_to @transaction
+      else
+        render 'new'
+      end
     end
   
     def show
