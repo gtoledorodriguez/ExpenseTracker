@@ -3,6 +3,20 @@ class AccountController < ApplicationController
         @account = Account.new
     end
 
+    def edit
+        @account = Account.find(params[:id])
+    end
+
+    def update
+        @account = Account.find(params[:id])
+
+        if @account.update(account_params)
+            redirect_to @account
+        else
+            render 'edit'
+        end
+    end
+
     def create
         @account = Account.new(account_params)
 
@@ -19,6 +33,13 @@ class AccountController < ApplicationController
 
     def index
         @account = Account.all 
+    end
+
+    def destroy
+        @account = Account.find(params[:id])
+        @account.destroy
+
+        redirect_to account_index_path
     end
 
     private
