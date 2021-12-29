@@ -13,15 +13,17 @@
 ActiveRecord::Schema.define(version: 2021_12_21_163356) do
 
   create_table "accounts", force: :cascade do |t|
-    t.string "type"
-    t.float "balance"
+    t.string "name"
+    t.integer "act_number"
+    t.string "act_type"
+    t.decimal "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "transactions", force: :cascade do |t|
     t.string "type"
-    t.float "amount"
+    t.decimal "amount"
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
