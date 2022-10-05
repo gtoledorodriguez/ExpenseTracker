@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Act name:</strong>
+  <%= @account.act_name %>
+</p>
+
+<p>
+  <strong>Act num:</strong>
+  <%= @account.act_num %>
+</p>
+
+<p>
+  <strong>Act type:</strong>
+  <%= @account.act_type %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @account.balance %>
+</p>
+
+<h2>Add Transaction:</h2>
+<%= form_for([@account, @account.account_transactions.build]) do |form| %>
+  <div class="field">
+      <%= form.label :date %>
+      <%= form.datetime_select :date %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :trans_type %>
+      <%= form.text_field :trans_type %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :amount %>
+      <%= form.text_field :amount %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>
+
+
+<%= link_to 'Edit', edit_account_path(@account) %> |
+<%= link_to 'Back', accounts_path %>

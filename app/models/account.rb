@@ -1,5 +1,4 @@
 class Account < ApplicationRecord
-    validates :act_number, presence: true
-    validates :act_type, presence: true
-    validates :balance, presence:true
+    has_many :transactions
+    has_many :account_transactions
 end
